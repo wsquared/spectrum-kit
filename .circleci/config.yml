@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
 jobs:
-  test:
+  setup:
     docker:
       - image: 'cimg/node:14.20.1'
     steps:
@@ -12,11 +12,35 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm install
+      - run:
+          name: Install dependencies
+          command: npm install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - node_modules
+            - build/*
+  lint_commit_message:
+    docker:
+      - image: 'cimg/node:14.20.1'
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Lint commit messages
+          command: npx commitlint --from main
+  test:
+    docker:
+      - image: 'cimg/node:14.20.1'
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
       - run: npm test
       - run: npm run cov:send
       - run: npm run cov:check
@@ -25,36 +49,34 @@ jobs:
       - image: 'cimg/node:14.20.1'
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
       - attach_workspace:
           at: build/docs
       - run:
           name: Install and configure dependencies
           command: |
-            npm install
             git config user.email "willwin.wang@gmail.com"
             git config user.name "ci-build"
       - add_ssh_keys:
           fingerprints:
             - '66:28:0f:96:81:5c:9e:4c:2a:fe:39:76:d7:20:19:cd'
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run doc:html
       - run: npm run doc:publish
 
 workflows:
   build:
     jobs:
-      - test
+      - setup
+      - lint_commit_message:
+          requires:
+            - setup
+      - test:
+          requires:
+            - setup
       - publish-docs:
           filters:
             branches:
               only:
                 - main
           requires:
+            - lint_commit_message
             - test
