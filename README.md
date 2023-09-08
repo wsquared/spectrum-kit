@@ -47,7 +47,6 @@ const node = new DoubleLinkedListNode('a');
 console.log(node.value); // => 'a'
 ```
 
-npm install spectrum-kit
 
 ### Installation
 
