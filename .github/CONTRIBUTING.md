@@ -71,7 +71,16 @@ To maintain code consistency and readability, please adhere to the following gui
 
 ## Commit Messages
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format for commit messages. Your commits should have a clear and structured format, like this:
+We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format for commit messages. 
+
+Please install [Commitizen](https://github.com/commitizen/cz-cli) before adding any commits:
+```bash
+npx cz
+```
+
+Then use `git cz` or `cz` instead of `git commit` when committing changes.
+
+Your commits should have a clear and structured format, like this:
 
 ```text
 feat: add a new feature
