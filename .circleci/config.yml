@@ -49,6 +49,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run doc:html
       - run: npm run doc:publish
 
 workflows:
