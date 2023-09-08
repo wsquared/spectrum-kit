@@ -35,6 +35,21 @@ jobs:
       - run: npm test
       - run: npm run cov:send
       - run: npm run cov:check
+  'publish-docs':
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run doc:publish
 
 workflows:
   version: 2
@@ -42,3 +57,11 @@ workflows:
     jobs:
       - 'node-14'
       - 'node-latest'
+      - 'publish-docs':
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - 'node-14'
+            - 'node-latest'
