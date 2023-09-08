@@ -57,7 +57,19 @@ If you plan to contribute code to Spectrum Kit, you'll need to set up your devel
 
 1. Clone your fork of the repository.
 2. Run `npm install` to install project dependencies.
-3. Start the development server with `npm start`.
+3. Open two terminals and run the following command respectively:
+
+Terminal 1:
+
+```bash
+npm watch:build
+```
+
+Terminal 2:
+
+```bash
+npm watch:test
+```
 
 ## Coding Guidelines
 

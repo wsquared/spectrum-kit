@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/wsquared/spectrum-kit/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/wsquared/spectrum-kit/tree/main)
+
 # Spectrum Kit
 
 Spectrum Kit is a collection of TypeScript tools designed for various scenarios. It includes a powerful `BrowserHistory` class that implements a doubly linked list and a `DoubleLinkedListNode` class for managing navigation history in your browser-based applications.
@@ -62,13 +64,13 @@ yarn add spectrum-kit
 
 You can import and use the classes provided by Spectrum Kit as demonstrated in the introduction section above. Make sure to check the documentation for more details and usage examples.
 
-### Contributing
+## Contributing
 
 We welcome contributions from the open-source community. Before contributing, please read [our contribution guidelines](./.github/CONTRIBUTING.md) to understand the process.
 
 If you encounter any issues or have ideas for improvements, please use our issue template to report bugs or suggest enhancements. If you'd like to submit a code change, follow our pull request template.
 
-### License
+## License
 
 Spectrum Kit is licensed under the MIT License. See the LICENSE file for details.
 
