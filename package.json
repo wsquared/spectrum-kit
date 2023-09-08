@@ -7,7 +7,7 @@
   "module": "build/module/index.js",
   "repository": "https://github.com/wsquared/spectrum-kit",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["spectrum", "spectrum-kit", "kit", "utility", "browser history", "history", "browser", "double linked list", "linked list", "linked"],
   "scripts": {
     "build": "run-p build:*",
     "build:main": "tsc -p tsconfig.json",
