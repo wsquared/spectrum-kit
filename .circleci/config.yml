@@ -1,9 +1,12 @@
-# https://circleci.com/docs/2.0/language-javascript/
-version: 2
+# https://circleci.com/docs/2.1/language-javascript/
+version: 2.1
+orbs:
+  node: circleci/node@5.1.0
+  gh-pages: sugarshin/gh-pages@1.0.1
 jobs:
-  'node-14':
+  test:
     docker:
-      - image: circleci/node:14
+      - image: 'cimg/node:14.20.1'
     steps:
       - checkout
       - restore_cache:
@@ -18,51 +21,24 @@ jobs:
       - run: npm test
       - run: npm run cov:send
       - run: npm run cov:check
-  'node-latest':
-    docker:
-      - image: circleci/node:latest
+  publish-docs:
+    executor: gh-pages/default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm test
-      - run: npm run cov:send
-      - run: npm run cov:check
-  'publish-docs':
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run doc:html
       - run: npm run doc:publish
+      - gh-pages/deploy:
+          setup-git: true
+          ssh-fingerprints: 66:28:0f:96:81:5c:9e:4c:2a:fe:39:76:d7:20:19:cd
 
 workflows:
-  version: 2
   build:
     jobs:
-      - 'node-14'
-      - 'node-latest'
-      - 'publish-docs':
+      - test
+      - publish-docs:
           filters:
             branches:
               only:
                 - main
           requires:
-            - 'node-14'
-            - 'node-latest'
+            - test
