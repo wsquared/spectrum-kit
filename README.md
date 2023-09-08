@@ -4,11 +4,15 @@ Spectrum Kit is a collection of TypeScript tools designed for various scenarios.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Spectrum Kit](#spectrum-kit)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [BrowserHistory](#browserhistory)
+    - [DoubleLinkedListNode](#doublelinkedlistnode)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Contributing](#contributing)
+    - [License](#license)
 
 ## Introduction
 
@@ -46,8 +50,6 @@ const node = new DoubleLinkedListNode('a');
 
 console.log(node.value); // => 'a'
 ```
-
-npm install spectrum-kit
 
 ### Installation
 
