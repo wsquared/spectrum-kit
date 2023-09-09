@@ -29,6 +29,10 @@ jobs:
       - image: 'cimg/node:14.20.1'
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - attach_workspace:
           at: ./
       - run:
@@ -39,6 +43,10 @@ jobs:
       - image: 'cimg/node:14.20.1'
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - attach_workspace:
           at: ./
       - run: npm test
@@ -50,9 +58,13 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: build/docs
+          at: node_modules
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run:
-          name: Install and configure dependencies
+          name: Set git user email and name
           command: |
             git config user.email "willwin.wang@gmail.com"
             git config user.name "ci-build"
