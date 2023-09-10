@@ -52,6 +52,7 @@ jobs:
       - run: npm test
       - run: npm run cov:send
       - run: npm run cov:check
+      - run: npm run cov
   publish-docs:
     docker:
       - image: 'cimg/node:14.20.1'
