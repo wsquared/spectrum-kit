@@ -37,7 +37,7 @@ jobs:
           at: ./
       - run:
           name: Lint commit messages
-          command: npx commitlint --from main
+          command: npx commitlint --from main --to HEAD --verbose
   test:
     docker:
       - image: 'cimg/node:14.20.1'
