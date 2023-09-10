@@ -12,23 +12,31 @@ test('BrowserHistory should work correctly', (t) => {
   t.is(history.forward(1), history.root);
 
   // Visit some pages
-  const page1 = history.visit('page1');
-  const page2 = history.visit('page2');
-  const page3 = history.visit('page3');
+  const page1 = 'page1';
+  const page2 = 'page2';
+  const page3 = 'page3';
+  history.visit(page1);
+  history.visit(page2);
+  history.visit(page3);
 
   // Test the back and forward methods
-  t.is(history.back(1).value, page2.value);
-  t.is(history.back(1).value, page1.value);
-  t.is(history.back(1).value, homepage);
-  t.is(history.forward(1).value, page1.value);
-  t.is(history.forward(1).value, page2.value);
-  t.is(history.forward(1).value, page3.value);
+  t.is(history.back(1), page2);
+  t.is(history.back(1), page1);
+  t.is(history.back(1), homepage);
+  t.is(history.forward(1), page1);
+  t.is(history.forward(1), page2);
+  t.is(history.forward(1), page3);
 
   // Test visiting a new page after going back
-  const page4 = history.visit('page4');
-  t.is(history.forward(1).value, page4.value);
+  const page4 = 'page4';
+  history.visit(page4);
+  t.is(history.forward(1), page4);
 
   // Test going back and forward multiple steps
-  t.is(history.back(2).value, page2.value);
-  t.is(history.forward(2).value, page4.value);
+  t.is(history.back(2), page2);
+  t.is(history.forward(2), page4);
+
+  // Test current and root properties
+  t.is(history.current, page4);
+  t.is(history.root, homepage);
 });
