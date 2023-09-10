@@ -6,7 +6,7 @@
 
 # Spectrum Kit
 
-Spectrum Kit is a collection of TypeScript tools designed for various scenarios. It includes a powerful `BrowserHistory` class that implements a doubly linked list and a `DoubleLinkedListNode` class for managing navigation history in your browser-based applications.
+Spectrum Kit is a collection of TypeScript tools designed for various scenarios.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ Spectrum Kit is a collection of TypeScript tools designed for various scenarios.
 
 ## Introduction
 
-Spectrum Kit provides TypeScript classes to simplify common tasks in web development, including managing browser history with the `BrowserHistory` class and working with double-linked lists using the `DoubleLinkedListNode` class.
+Spectrum Kit provides TypeScript classes to simplify common tasks in web development or your nodejs development, including managing browser history with the `BrowserHistory` class and working with double-linked lists using the `DoubleLinkedListNode` class and a `Deque` for managing complex data relationships.
 
 ### BrowserHistory
 
@@ -53,6 +53,20 @@ const node = new DoubleLinkedListNode('a');
 console.log(node.value); // => 'a'
 ```
 
+### Deque
+
+The Deque class provides a double ended queue, similar to python's deque. You can use it in various scenarios, and achieve a time complexity of O(1) for popLeft() and appendLeft() as opposed to O(n) for array's shift() and unshift().
+
+```js
+import { Deque } from 'spectrum-kit';
+
+const deque = new Deque([1, 2, 3]);
+
+deque.appendLeft(0);
+
+deque.popLeft();
+// 0
+```
 
 ### Installation
 

@@ -1,5 +1,5 @@
 /**
- * A double linked list node
+ * A double linked list node.
  *
  * ### Example (es imports)
  * ```js
