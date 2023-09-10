@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/wsquared/spectrum-kit/compare/v1.3.0...v2.0.0) (2023-09-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **browserhistory.ts:** visit returns void and not dll, forward and back returns T and not dll.
+
+* **browserhistory.ts:** forward and back returns T, visit returns void ([409679e](https://github.com/wsquared/spectrum-kit/commit/409679e9689bf913ef74a02567b1c0507ad65390))
+
 ## [1.3.0](https://github.com/wsquared/spectrum-kit/compare/v1.1.1...v1.3.0) (2023-09-10)
 
 
