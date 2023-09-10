@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/wsquared/spectrum-kit/compare/v1.1.1...v1.3.0) (2023-09-10)
+
+
+### Features
+
+* **deque:** added deque ([6fc2ab9](https://github.com/wsquared/spectrum-kit/commit/6fc2ab9d46070e9862975dc9d7a5c7de6992611e))
+
 ## [1.2.0](https://github.com/wsquared/spectrum-kit/compare/v1.1.1...v1.2.0) (2023-09-10)
 
 
