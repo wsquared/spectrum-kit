@@ -42,44 +42,72 @@ import { DoubleLinkedListNode } from './dll';
  * @template T The type of the value stored in each node
  */
 class BrowserHistory<T> {
-  root: DoubleLinkedListNode<T>;
-  current: DoubleLinkedListNode<T>;
+  private _root: DoubleLinkedListNode<T>;
+  private _current: DoubleLinkedListNode<T>;
 
+  /**
+   * @param homepage The homepage to initialize the browser history with
+   */
   constructor(homepage: T) {
-    this.root = new DoubleLinkedListNode<T>(homepage);
-    this.current = this.root;
+    this._root = new DoubleLinkedListNode<T>(homepage);
+    this._current = this._root;
   }
 
-  visit(page: T): DoubleLinkedListNode<T> {
+  /**
+   * Returns the root node's value.
+   */
+  get root(): T {
+    return this._root.value;
+  }
+
+  /**
+   * Returns the current node's value.
+   */
+  get current(): T {
+    return this._current.value;
+  }
+
+  /**
+   * @param page The page to visit
+   */
+  visit(page: T) {
     const node = new DoubleLinkedListNode<T>(page);
 
-    this.current.next = node;
-    node.prev = this.current;
-    this.current = node;
-
-    return node;
+    this._current.next = node;
+    node.prev = this._current;
+    this._current = node;
   }
 
-  back(steps: number): DoubleLinkedListNode<T> | null {
+  /**
+   * @param steps The number of steps to go back
+   * @returns The value of the node that is `steps` steps back from the current node
+   * @returns The root node's value if there is no node `steps` steps back from the current node
+   */
+  back(steps: number): T {
     let stepsLeft = steps;
 
-    while (this.current.prev && stepsLeft > 0) {
-      this.current = this.current.prev;
+    while (this._current.prev && stepsLeft > 0) {
+      this._current = this._current.prev;
       stepsLeft--;
     }
 
-    return this.current;
+    return this._current.value;
   }
 
-  forward(steps: number): DoubleLinkedListNode<T> | null {
+  /**
+   * @param steps The number of steps to go forward
+   * @returns The value of the node that is `steps` steps forward from the current node
+   * @returns The root node's value if there is no node `steps` steps forward from the current node
+   */
+  forward(steps: number): T {
     let stepsLeft = steps;
 
-    while (this.current.next && stepsLeft > 0) {
-      this.current = this.current.next;
+    while (this._current.next && stepsLeft > 0) {
+      this._current = this._current.next;
       stepsLeft--;
     }
 
-    return this.current;
+    return this._current.value;
   }
 }
 
