@@ -1,4 +1,8 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/wsquared/spectrum-kit/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/wsquared/spectrum-kit/tree/main)
+[![codecov](https://codecov.io/github/wsquared/spectrum-kit/graph/badge.svg?token=EDA96MHFXB)](https://codecov.io/github/wsquared/spectrum-kit)
+![NPM Downloads](https://img.shields.io/npm/dw/spectrum-kit)
+![NPM License](https://img.shields.io/npm/l/spectrum-kit)
+[![Twitter](https://img.shields.io/twitter/follow/:twitterHandle.svg?style=social&label=@willwin_w)](https://twitter.com/willwin_w)
 
 # Spectrum Kit
 
