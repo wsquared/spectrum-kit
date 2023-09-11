@@ -19,7 +19,11 @@
     "linked list",
     "linked",
     "queue",
-    "deque"
+    "deque",
+    "serializer",
+    "deserializer",
+    "serialize",
+    "deserialize"
   ],
   "scripts": {
     "build": "run-p build:*",

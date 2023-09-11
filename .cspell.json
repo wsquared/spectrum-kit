@@ -23,7 +23,8 @@
     "typedoc",
     "untracked",
     "deque",
-    "unshift"
+    "unshift",
+    "deserialization"
   ],
   "flagWords": [],
   "ignorePaths": [
