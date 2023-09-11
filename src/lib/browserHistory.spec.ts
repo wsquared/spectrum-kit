@@ -39,4 +39,8 @@ test('BrowserHistory should work correctly', (t) => {
   // Test current and root properties
   t.is(history.current, page4);
   t.is(history.root, homepage);
+
+  // Test getRootNode and getCurrentNode methods
+  t.is(history.getRootNode().value, homepage);
+  t.is(history.getCurrentNode().value, page4);
 });
