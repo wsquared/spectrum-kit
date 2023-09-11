@@ -54,17 +54,31 @@ class BrowserHistory<T> {
   }
 
   /**
-   * Returns the root node's value.
+   * @returns the root node's value.
    */
   get root(): T {
     return this._root.value;
   }
 
   /**
-   * Returns the current node's value.
+   * @returns the current node's value.
    */
   get current(): T {
     return this._current.value;
+  }
+
+  /**
+   * @returns The root double linked list node
+   */
+  getRootNode(): DoubleLinkedListNode<T> {
+    return this._root;
+  }
+
+  /**
+   * @returns The current double linked list node
+   */
+  getCurrentNode(): DoubleLinkedListNode<T> {
+    return this._current;
   }
 
   /**

@@ -17,7 +17,9 @@
     "browser",
     "double linked list",
     "linked list",
-    "linked"
+    "linked",
+    "queue",
+    "deque"
   ],
   "scripts": {
     "build": "run-p build:*",
