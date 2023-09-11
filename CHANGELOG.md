@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/wsquared/spectrum-kit/compare/v2.0.0...v2.1.0) (2023-09-11)
+
+
+### Features
+
+* **browserhistory:** add getRootNode() + getCurrentNode() ([0fdd9af](https://github.com/wsquared/spectrum-kit/commit/0fdd9aff3a5fc379b1f09b6f204b4a0448776402))
+
 ## [2.0.0](https://github.com/wsquared/spectrum-kit/compare/v1.3.0...v2.0.0) (2023-09-10)
 
 
