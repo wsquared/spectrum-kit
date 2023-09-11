@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/wsquared/spectrum-kit/compare/v2.1.0...v2.2.0) (2023-09-11)
+
+
+### Features
+
+* **serialize and deserialize:** serialize and deserialize dll for storage or send over network ([42db248](https://github.com/wsquared/spectrum-kit/commit/42db2483d84c939ce26336bbc57aa5108b6b12f8))
+
 ## [2.1.0](https://github.com/wsquared/spectrum-kit/compare/v2.0.0...v2.1.0) (2023-09-11)
 
 
