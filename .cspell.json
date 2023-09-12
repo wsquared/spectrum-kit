@@ -24,7 +24,8 @@
     "untracked",
     "deque",
     "unshift",
-    "deserialization"
+    "deserialization",
+    "localforage"
   ],
   "flagWords": [],
   "ignorePaths": [

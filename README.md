@@ -41,6 +41,51 @@ history.forward(1); // => page2
 history.forward(1); // => page3
 ```
 
+You can use this to manage a user's history between separate applications by storing the serialized data:
+
+```js
+(async () => {
+  import * as localforage from 'localforage';
+  import { BrowserHistory, deserializeDoubleLinkedList, IDllSerializedList } from 'spectrum-kit';
+
+  interface IPageState {
+    url: string;
+    pageState: { rowOffset: number };
+  }
+  const userId = "123";
+
+  const setHistory =
+    (browserHistory: BrowserHistory<IPageState>) =>
+    async (userId: string, state: IPageState) => {
+      browserHistory.visit(state);
+
+      return await localforage.setItem<IDllSerializedList<IPageState>>(
+        userId,
+        browserHistory.getSerializedCurrent()
+      );
+    };
+
+  const browserHistory = new BrowserHistory<IPageState>({
+    url: "/",
+    pageState: { rowOffset: 0 },
+  });
+
+  const history = await setHistory(browserHistory)(userId, {
+    url: "/foo",
+    pageState: { rowOffset: 10 },
+  });
+
+  console.log(history);
+  console.log(
+    await localforage.getItem<IDllSerializedList<IPageState>>(userId)
+  );
+  // [
+  //    { value: { url: '/', pageState: { rowOffset: 0 } }, prev: null, next: '/foo'},
+  //    { value: { url: '/foo', pageState: { rowOffset: 10 } }, prev: '/', next: null }
+  // ]
+})();
+```
+
 ### Serialization
 
 To store your BrowserHistory data in a database, IndexedDB, or localStorage, you can use the serializeDoubleLinkedList function to convert the history into a serializable format. This function returns an array of objects where each object represents a node in the doubly linked list.
