@@ -106,6 +106,48 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page2</span>
 history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page3</span>
 </code></pre>
+				<p>You can use this to manage a user&#39;s history between separate applications by storing the serialized data:</p>
+				<pre><code class="language-js">(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> localforage <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;localforage&#x27;</span>;
+  <span class="hljs-keyword">import</span> { BrowserHistory, deserializeDoubleLinkedList, IDllSerializedList } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;spectrum-kit&#x27;</span>;
+
+  interface IPageState {
+    <span class="hljs-attr">url</span>: string;
+    pageState: { <span class="hljs-attr">rowOffset</span>: number };
+  }
+  <span class="hljs-keyword">const</span> userId = <span class="hljs-string">&quot;123&quot;</span>;
+
+  <span class="hljs-keyword">const</span> setHistory =
+    <span class="hljs-function">(<span class="hljs-params">browserHistory: BrowserHistory&lt;IPageState&gt;</span>) =&gt;</span>
+    <span class="hljs-keyword">async</span> (userId: string, <span class="hljs-attr">state</span>: IPageState) =&gt; {
+      browserHistory.visit(state);
+
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> localforage.setItem&lt;IDllSerializedList&lt;IPageState&gt;&gt;(
+        userId,
+        browserHistory.getSerializedCurrent()
+      );
+    };
+
+  <span class="hljs-keyword">const</span> browserHistory = <span class="hljs-keyword">new</span> BrowserHistory&lt;IPageState&gt;({
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/&quot;</span>,
+    <span class="hljs-attr">pageState</span>: { <span class="hljs-attr">rowOffset</span>: <span class="hljs-number">0</span> },
+  });
+
+  <span class="hljs-keyword">const</span> history = <span class="hljs-keyword">await</span> setHistory(browserHistory)(userId, {
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/foo&quot;</span>,
+    <span class="hljs-attr">pageState</span>: { <span class="hljs-attr">rowOffset</span>: <span class="hljs-number">10</span> },
+  });
+
+  <span class="hljs-built_in">console</span>.log(history);
+  <span class="hljs-built_in">console</span>.log(
+    <span class="hljs-keyword">await</span> localforage.getItem&lt;IDllSerializedList&lt;IPageState&gt;&gt;(userId)
+  );
+  <span class="hljs-comment">// [</span>
+  <span class="hljs-comment">//    { value: { url: &#x27;/&#x27;, pageState: { rowOffset: 0 } }, prev: null, next: &#x27;/foo&#x27;},</span>
+  <span class="hljs-comment">//    { value: { url: &#x27;/foo&#x27;, pageState: { rowOffset: 10 } }, prev: &#x27;/&#x27;, next: null }</span>
+  <span class="hljs-comment">// ]</span>
+})();
+</code></pre>
 				<a href="#serialization" id="serialization" style="color: inherit; text-decoration: none;">
 					<h3>Serialization</h3>
 				</a>
