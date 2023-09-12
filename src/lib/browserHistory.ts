@@ -1,4 +1,5 @@
 import { DoubleLinkedListNode } from './dll';
+import { serializeDoubleLinkedList } from './dllSerialization';
 
 /**
  * A BrowserHistory class that implements a doubly linked list.
@@ -48,7 +49,7 @@ class BrowserHistory<T> {
   /**
    * @param homepage The homepage to initialize the browser history with
    */
-  constructor(homepage: T) {
+  constructor(homepage: T = null) {
     this._root = new DoubleLinkedListNode<T>(homepage);
     this._current = this._root;
   }
@@ -122,6 +123,39 @@ class BrowserHistory<T> {
     }
 
     return this._current.value;
+  }
+
+  /**
+   * setNode sets the current node as the @param node and sets the head of @param node as the root node.
+   *
+   * @param node a doubly linked list node
+   */
+  setNode(node: DoubleLinkedListNode<T>): void {
+    this._current = node;
+
+    while (node.prev) {
+      node = node.prev;
+    }
+
+    this._root = node;
+  }
+
+  /**
+   * serializes the root node of the browser history, so that it can be stored in a database or send over the network.
+   *
+   * @returns an array of objects representing the doubly linked list, where the first index 0 is the root node
+   */
+  getSerializedRoot(): { value: T; next: T | null; prev: T | null }[] {
+    return serializeDoubleLinkedList(this._root);
+  }
+
+  /**
+   * serializes the current node of the browser history, so that it can be stored in a database or send over the network.
+   *
+   * @returns an array of objects representing the doubly linked list, where the first index 0 is the current node
+   */
+  getSerializedCurrent(): { value: T; next: T | null; prev: T | null }[] {
+    return serializeDoubleLinkedList(this._current);
   }
 }
 
