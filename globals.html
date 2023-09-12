@@ -76,6 +76,18 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/idllserializednode.html" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>Node</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#idllserializedlist" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>List</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#deserializedoublelinkedlist" class="tsd-kind-icon">deserialize<wbr>Double<wbr>Linked<wbr>List</a></li>
@@ -86,18 +98,37 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="idllserializedlist" class="tsd-anchor"></a>
+					<h3>IDll<wbr>Serialized<wbr>List</h3>
+					<div class="tsd-signature tsd-kind-icon">IDll<wbr>Serialized<wbr>List&lt;T&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/idllserializednode.html" class="tsd-signature-type">IDllSerializedNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/bc52b7c/src/types/dllSerialization.ts#L7">types/dllSerialization.ts:7</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>T</h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 					<a name="deserializedoublelinkedlist" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> deserialize<wbr>Double<wbr>Linked<wbr>List</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">deserialize<wbr>Double<wbr>Linked<wbr>List&lt;T&gt;<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+						<li class="tsd-signature tsd-kind-icon">deserialize<wbr>Double<wbr>Linked<wbr>List&lt;T&gt;<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="globals.html#idllserializedlist" class="tsd-signature-type">IDllSerializedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/7738869/src/lib/dllSerialization.ts#L44">lib/dllSerialization.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/bc52b7c/src/lib/dllSerialization.ts#L72">lib/dllSerialization.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -115,7 +146,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>data: <span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>data: <a href="globals.html#idllserializedlist" class="tsd-signature-type">IDllSerializedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>an array of objects representing a doubly linked list</p>
@@ -124,7 +155,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="classes/doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
-							<p>a doubly linked list node</p>
+							<p>a doubly linked list node deserialize from the data, where the first index 0 is the current node</p>
 						</li>
 					</ul>
 				</section>
@@ -132,13 +163,13 @@
 					<a name="serializedoublelinkedlist" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> serialize<wbr>Double<wbr>Linked<wbr>List</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">serialize<wbr>Double<wbr>Linked<wbr>List&lt;T&gt;<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="classes/doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">serialize<wbr>Double<wbr>Linked<wbr>List&lt;T&gt;<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="classes/doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#idllserializedlist" class="tsd-signature-type">IDllSerializedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/7738869/src/lib/dllSerialization.ts#L10">lib/dllSerialization.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/bc52b7c/src/lib/dllSerialization.ts#L15">lib/dllSerialization.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,8 +195,8 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>an array of objects representing the doubly linked list</p>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#idllserializedlist" class="tsd-signature-type">IDllSerializedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>an array of objects representing the doubly linked list, where the first index 0 is the current node</p>
 						</li>
 					</ul>
 				</section>
@@ -190,6 +221,12 @@
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/doublelinkedlistnode.html" class="tsd-kind-icon">Double<wbr>Linked<wbr>List<wbr>Node</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/idllserializednode.html" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#idllserializedlist" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>List</a>
+					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#deserializedoublelinkedlist" class="tsd-kind-icon">deserialize<wbr>Double<wbr>Linked<wbr>List</a>
 					</li>
@@ -209,6 +246,9 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
