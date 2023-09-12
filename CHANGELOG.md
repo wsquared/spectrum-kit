@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/wsquared/spectrum-kit/compare/v2.3.1...v2.4.0) (2023-09-12)
+
+
+### Features
+
+* **browserhistory:** browser history can (de)serialize ([25beca6](https://github.com/wsquared/spectrum-kit/commit/25beca6bcb5841111eeb19f536671afdaae8f8d0))
+
 ### [2.3.1](https://github.com/wsquared/spectrum-kit/compare/v2.3.0...v2.3.1) (2023-09-12)
 
 
