@@ -6,6 +6,10 @@ import {
   serializeDoubleLinkedList,
 } from './dllSerialization';
 
+test('Deserialize an empty list', (t) => {
+  t.is(deserializeDoubleLinkedList([]), null);
+});
+
 test('Serialize and deserialize a doubly linked list', (t) => {
   // Create a sample doubly linked list
   const node1 = new DoubleLinkedListNode(1);
@@ -32,6 +36,47 @@ test('Serialize and deserialize a doubly linked list', (t) => {
   t.is(deserializedList.next.next.next, null);
 });
 
+test('Serialize and deserialize a doubly linked list with a prev node', (t) => {
+  const node11 = new DoubleLinkedListNode(11);
+  const node10 = new DoubleLinkedListNode(10);
+  const node0 = new DoubleLinkedListNode(0);
+  const node1 = new DoubleLinkedListNode(1);
+  const node2 = new DoubleLinkedListNode(2);
+  const node3 = new DoubleLinkedListNode(3);
+
+  node11.next = node10;
+  node10.prev = node11;
+  node10.next = node0;
+  node0.prev = node10;
+  node0.next = node1;
+  node1.prev = node0;
+  node1.next = node2;
+  node2.prev = node1;
+  node2.next = node3;
+  node3.prev = node2;
+
+  // Serialize the list
+  const serializedData = serializeDoubleLinkedList(node1);
+
+  // Deserialize the data
+  const deserializedList = deserializeDoubleLinkedList(serializedData);
+
+  // Check that the deserialized list is correct
+  t.is(deserializedList.prev.prev.prev.prev, null);
+  t.is(deserializedList.prev.prev.prev.next.value, 10);
+  t.is(deserializedList.prev.prev.prev.value, 11);
+  t.is(deserializedList.prev.prev.value, 10);
+  t.is(deserializedList.prev.prev.next.value, 0);
+  t.is(deserializedList.prev.value, 0);
+  t.is(deserializedList.prev.next.value, 1);
+  t.is(deserializedList.value, 1);
+  t.is(deserializedList.next.value, 2);
+  t.is(deserializedList.next.prev.value, 1);
+  t.is(deserializedList.next.next.value, 3);
+  t.is(deserializedList.next.next.prev.value, 2);
+  t.is(deserializedList.next.next.next, null);
+});
+
 test('Serialize and deserialize an empty doubly linked list', (t) => {
   // Serialize an empty list
   const serializedData = serializeDoubleLinkedList(null);
@@ -46,9 +91,9 @@ test('Serialize and deserialize an empty doubly linked list', (t) => {
 test('Deserialize a doubly linked list with no prev pointers', (t) => {
   // Create a serialized representation of a doubly linked list with no prev pointers
   const serializedData = [
-    { value: 1, next: 2 },
+    { value: 1, next: 2, prev: null },
     { value: 2, prev: 1, next: 3 },
-    { value: 3, prev: 2 },
+    { value: 3, prev: 2, next: null },
   ];
 
   // Deserialize the data
@@ -62,5 +107,101 @@ test('Deserialize a doubly linked list with no prev pointers', (t) => {
   t.is(deserializedList.next.prev.prev, null); // Ensure prev is null
   t.is(deserializedList.next.next.value, 3);
   t.is(deserializedList.next.next.prev.value, 2);
-  t.is(deserializedList.next.next.next, null);
+  t.is(deserializedList.next.next.next, null); // Ensure next is null
+});
+
+test('Deserialize a doubly linked list with next pointers', (t) => {
+  const serializedData = [
+    {
+      value: 'page4',
+      next: 'page5',
+      prev: 'page3',
+    },
+    {
+      value: 'page3',
+      next: 'page4',
+      prev: 'page2',
+    },
+    {
+      value: 'page2',
+      next: 'page3',
+      prev: 'page1',
+    },
+    {
+      value: 'page1',
+      next: 'page2',
+      prev: 'homepage',
+    },
+    {
+      value: 'homepage',
+      next: 'page1',
+      prev: null,
+    },
+    {
+      value: 'page5',
+      prev: 'page4',
+      next: null,
+    },
+  ];
+
+  const deserializedList = deserializeDoubleLinkedList(serializedData);
+
+  let dllNextTest = deserializedList;
+  let i = 0;
+
+  while (dllNextTest.next) {
+    if (i === 0) {
+      t.is(dllNextTest.value, 'page4');
+      t.is(dllNextTest.next.value, 'page5');
+      t.is(dllNextTest.prev.value, 'page3');
+    } else if (i === 1) {
+      t.is(dllNextTest.value, 'page3');
+      t.is(dllNextTest.next.value, 'page4');
+      t.is(dllNextTest.prev.value, 'page2');
+    } else if (i === 2) {
+      t.is(dllNextTest.value, 'page2');
+      t.is(dllNextTest.next.value, 'page3');
+      t.is(dllNextTest.prev.value, 'page1');
+    } else if (i === 3) {
+      t.is(dllNextTest.value, 'page1');
+      t.is(dllNextTest.next.value, 'page2');
+      t.is(dllNextTest.prev.value, 'homepage');
+    } else {
+      t.is(dllNextTest.value, 'homepage');
+      t.is(dllNextTest.next.value, 'page1');
+      t.is(dllNextTest.prev, null);
+    }
+    dllNextTest = dllNextTest.next;
+    i++;
+  }
+
+  let dllPrevTest = deserializedList;
+
+  let j = 0;
+
+  while (dllPrevTest.prev) {
+    if (j === 4) {
+      t.is(dllPrevTest.value, 'homepage');
+      t.is(dllPrevTest.prev, null);
+      t.is(dllPrevTest.next.value, 'page1');
+    } else if (j === 3) {
+      t.is(dllPrevTest.value, 'page1');
+      t.is(dllPrevTest.prev.value, 'homepage');
+      t.is(dllPrevTest.next.value, 'page2');
+    } else if (j === 2) {
+      t.is(dllPrevTest.value, 'page2');
+      t.is(dllPrevTest.prev.value, 'page1');
+      t.is(dllPrevTest.next.value, 'page3');
+    } else if (j === 1) {
+      t.is(dllPrevTest.value, 'page3');
+      t.is(dllPrevTest.prev.value, 'page2');
+      t.is(dllPrevTest.next.value, 'page4');
+    } else if (j === 0) {
+      t.is(dllPrevTest.value, 'page4');
+      t.is(dllPrevTest.prev.value, 'page3');
+      t.is(dllPrevTest.next.value, 'page5');
+    }
+    dllPrevTest = dllPrevTest.prev;
+    j++;
+  }
 });
