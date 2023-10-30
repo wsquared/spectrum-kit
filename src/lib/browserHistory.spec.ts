@@ -60,72 +60,94 @@ test('Back and forward methods should work correctly after visiting a new page',
   t.is(t.context.history.forward(1).pathname, page1);
 });
 
+const historyTestDouble = {
+  homePage: [
+    {
+      key: 'homepage',
+      value: undefined,
+      prev: null,
+      next: { key: 'page1', value: undefined },
+    },
+    {
+      key: 'page1',
+      value: undefined,
+      prev: { key: 'homepage', value: undefined },
+      next: { key: 'page2', value: undefined },
+    },
+    {
+      key: 'page2',
+      value: undefined,
+      prev: { key: 'page1', value: undefined },
+      next: { key: 'page3', value: undefined },
+    },
+    {
+      key: 'page3',
+      value: undefined,
+      prev: { key: 'page2', value: undefined },
+      next: { key: 'page4', value: undefined },
+    },
+    {
+      key: 'page4',
+      value: undefined,
+      prev: { key: 'page3', value: undefined },
+      next: { key: 'page1', value: undefined },
+    },
+    {
+      key: 'page1',
+      value: undefined,
+      prev: { key: 'page4', value: undefined },
+      next: null,
+    },
+  ],
+  currentPage: [
+    {
+      key: 'page1',
+      value: undefined,
+      prev: { key: 'page4', value: undefined },
+      next: null,
+    },
+    {
+      key: 'page4',
+      value: undefined,
+      prev: { key: 'page3', value: undefined },
+      next: { key: 'page1', value: undefined },
+    },
+    {
+      key: 'page3',
+      value: undefined,
+      prev: { key: 'page2', value: undefined },
+      next: { key: 'page4', value: undefined },
+    },
+    {
+      key: 'page2',
+      value: undefined,
+      prev: { key: 'page1', value: undefined },
+      next: { key: 'page3', value: undefined },
+    },
+    {
+      key: 'page1',
+      value: undefined,
+      prev: { key: 'homepage', value: undefined },
+      next: { key: 'page2', value: undefined },
+    },
+    {
+      key: 'homepage',
+      value: undefined,
+      prev: null,
+      next: { key: 'page1', value: undefined },
+    },
+  ],
+};
+
 test('serialize method should work correctly', (t) => {
   // Test the serialize method
-  t.deepEqual(t.context.history.serializeHistory(), {
-    homePage: [
-      {
-        value: { pathname: 'homepage', state: undefined },
-        prev: null,
-        next: { pathname: 'page1', state: undefined },
-      },
-      {
-        value: { pathname: 'page1', state: undefined },
-        prev: { pathname: 'homepage', state: undefined },
-        next: { pathname: 'page2', state: undefined },
-      },
-      {
-        value: { pathname: 'page2', state: undefined },
-        prev: { pathname: 'page1', state: undefined },
-        next: { pathname: 'page3', state: undefined },
-      },
-      {
-        value: { pathname: 'page3', state: undefined },
-        prev: { pathname: 'page2', state: undefined },
-        next: { pathname: 'page4', state: undefined },
-      },
-      {
-        value: { pathname: 'page4', state: undefined },
-        prev: { pathname: 'page3', state: undefined },
-        next: { pathname: 'page1', state: undefined },
-      },
-      {
-        value: { pathname: 'page1', state: undefined },
-        prev: { pathname: 'page4', state: undefined },
-        next: null,
-      },
-    ],
-    currentPage: [
-      {
-        value: { pathname: 'page1', state: undefined },
-        prev: { pathname: 'page4', state: undefined },
-        next: null,
-      },
-      {
-        value: { pathname: 'page4', state: undefined },
-        prev: { pathname: 'page3', state: undefined },
-        next: { pathname: 'page1', state: undefined },
-      },
-      {
-        value: { pathname: 'page3', state: undefined },
-        prev: { pathname: 'page2', state: undefined },
-        next: { pathname: 'page4', state: undefined },
-      },
-      {
-        value: { pathname: 'page2', state: undefined },
-        prev: { pathname: 'page1', state: undefined },
-        next: { pathname: 'page3', state: undefined },
-      },
-      {
-        value: { pathname: 'page1', state: undefined },
-        prev: { pathname: 'homepage', state: undefined },
-        next: { pathname: 'page2', state: undefined },
-      },
-      {
-        value: { pathname: 'homepage', state: undefined },
-        prev: null,
-        next: { pathname: 'page1', state: undefined },
-      },
-    ],
-  });
+  t.deepEqual(t.context.history.serializeHistory(), historyTestDouble);
+});
+
+test('deserialize method should work correctly', (t) => {
+  t.context.history.deserializeHistory(historyTestDouble);
+  t.is(t.context.history.back(1).pathname, page4);
+  t.is(t.context.history.forward(1).pathname, page1);
+  t.is(t.context.history.getHomePage().pathname, homepage);
+  t.is(t.context.history.getCurrentPage().pathname, page1);
 });

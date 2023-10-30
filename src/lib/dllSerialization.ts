@@ -21,17 +21,24 @@ const serializeDoubleLinkedList = <T>(
 
   while (current) {
     const serializedNode: IDllSerializedNode<T> = {
+      key: current.key,
       value: current.value,
       prev: null,
       next: null,
     };
 
     if (current.prev) {
-      serializedNode.prev = current.prev.value;
+      serializedNode.prev = {
+        key: current.prev.key,
+        value: current.prev.value,
+      };
     }
 
     if (current.next) {
-      serializedNode.next = current.next.value;
+      serializedNode.next = {
+        key: current.next.key,
+        value: current.next.value,
+      };
     }
 
     serializedList.push(serializedNode);
@@ -42,17 +49,24 @@ const serializeDoubleLinkedList = <T>(
 
   while (currentPrev) {
     const serializedNode: IDllSerializedNode<T> = {
+      key: currentPrev.key,
       value: currentPrev.value,
       prev: null,
       next: null,
     };
 
     if (currentPrev.prev) {
-      serializedNode.prev = currentPrev.prev.value;
+      serializedNode.prev = {
+        key: currentPrev.prev.key,
+        value: currentPrev.prev.value,
+      };
     }
 
     if (currentPrev.next) {
-      serializedNode.next = currentPrev.next.value;
+      serializedNode.next = {
+        key: currentPrev.next.key,
+        value: currentPrev.next.value,
+      };
     }
 
     serializedList.push(serializedNode);
@@ -76,21 +90,21 @@ const deserializeDoubleLinkedList = <T>(
     return null;
   }
 
-  const nodeMap: Map<T, DoubleLinkedListNode<T>> = new Map();
+  const nodeMap: Map<string, DoubleLinkedListNode<T>> = new Map();
   let currentNode: DoubleLinkedListNode<T> | null = null;
 
   for (const item of data) {
-    const newNode = new DoubleLinkedListNode(item.value);
-    nodeMap.set(item.value, newNode);
+    const newNode = new DoubleLinkedListNode(item.key, item.value);
+    nodeMap.set(item.key, newNode);
 
-    if ((item.prev || item.prev === 0) && nodeMap.has(item.prev)) {
-      const prevNode = nodeMap.get(item.prev);
+    if (item.prev && nodeMap.has(item.prev.key)) {
+      const prevNode = nodeMap.get(item.prev.key);
       newNode.prev = prevNode;
       prevNode.next = newNode;
     }
 
-    if ((item.next || item.next === 0) && nodeMap.has(item.next)) {
-      const nextNode = nodeMap.get(item.next);
+    if (item.next && nodeMap.has(item.next.key)) {
+      const nextNode = nodeMap.get(item.next.key);
       newNode.next = nextNode;
       nextNode.prev = newNode;
     }

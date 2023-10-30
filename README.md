@@ -33,57 +33,12 @@ const page1 = history.visit('page1');
 const page2 = history.visit('page2');
 const page3 = history.visit('page3');
 
-history.back(1); // => page2
-history.back(1); // => page1
-history.back(1); // => homepage
-history.forward(1); // => page1
-history.forward(1); // => page2
-history.forward(1); // => page3
-```
-
-You can use this to manage a user's history between separate applications by storing the serialized data:
-
-```js
-(async () => {
-  import * as localforage from 'localforage';
-  import { BrowserHistory, deserializeDoubleLinkedList, IDllSerializedList } from 'spectrum-kit';
-
-  interface IPageState {
-    url: string;
-    pageState: { rowOffset: number };
-  }
-  const userId = "123";
-
-  const setHistory =
-    (browserHistory: BrowserHistory<IPageState>) =>
-    async (userId: string, state: IPageState) => {
-      browserHistory.visit(state);
-
-      return await localforage.setItem<IDllSerializedList<IPageState>>(
-        userId,
-        browserHistory.getSerializedCurrent()
-      );
-    };
-
-  const browserHistory = new BrowserHistory<IPageState>({
-    url: "/",
-    pageState: { rowOffset: 0 },
-  });
-
-  const history = await setHistory(browserHistory)(userId, {
-    url: "/foo",
-    pageState: { rowOffset: 10 },
-  });
-
-  console.log(history);
-  console.log(
-    await localforage.getItem<IDllSerializedList<IPageState>>(userId)
-  );
-  // [
-  //    { value: { url: '/', pageState: { rowOffset: 0 } }, prev: null, next: '/foo'},
-  //    { value: { url: '/foo', pageState: { rowOffset: 10 } }, prev: '/', next: null }
-  // ]
-})();
+ history.back(1); // => { pathname: page2, state: undefined }
+ history.back(1); // => { pathname: page1, state: undefined }
+ history.back(1); // => { pathname: homepage, state: undefined }
+ history.forward(1); // => { pathname: page1, state: undefined }
+ history.forward(1); // => { pathname: page2, state: undefined }
+ history.forward(1); // => { pathname: page3, state: undefined }
 ```
 
 ### Serialization
@@ -95,7 +50,7 @@ To store your BrowserHistory data in a database, IndexedDB, or localStorage, you
 import { serializeDoubleLinkedList } from 'spectrum-kit';
 
 // Assuming you have a BrowserHistory instance called 'history'
-const serializedData = serializeDoubleLinkedList(history.getRootNode());
+const serializedData = history.serializeHistory();
 
 // Now, you can store the 'serializedData' array in your preferred storage solution
 // (e.g., IndexedDB, localStorage, or a database).
@@ -106,17 +61,17 @@ const serializedData = serializeDoubleLinkedList(history.getRootNode());
 To retrieve and reconstruct your BrowserHistory data from storage, you can use the deserializeDoubleLinkedList function. This function takes the serialized data as input and reconstructs the doubly linked list, allowing you to continue using it.
 
 ```js
-// Import the deserializeDoubleLinkedList function
-import { deSerializeDoubleLinkedList } from 'spectrum-kit';
+import { BrowserHistory } from 'spectrum-kit';
 
-// Retrieve the serialized data from your storage solution (e.g., IndexedDB or localStorage)
+
+// Retrieve the serialized data from your storage solution (e.g., IndexedDB or localStorage), must be serialized using
+// serializeDoubleLinkedList in this repo
 const storedData = /* Retrieve your data here */;
 
-// Deserialize the data to reconstruct the BrowserHistory
-const deserializedList = deserializeDoubleLinkedList(storedData);
+// Deserialize the data 
+const history = new BrowserHistory('');
 
-// You can now use 'deserializedList' as a BrowserHistory instance with your history data.
-
+history.deserializeHistory(storedData);
 ```
 
 ### DoubleLinkedListNode

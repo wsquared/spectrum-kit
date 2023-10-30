@@ -1,5 +1,3 @@
-import { DoubleLinkedListNode } from './dll';
-
 /**
  * A double ended queue using a double linked list, where
  * .popLeft() and .appendLeft() will be a time complexity
@@ -210,6 +208,18 @@ class Deque<T> {
     this._head = null;
     this._tail = null;
     this._size = 0;
+  }
+}
+
+class DoubleLinkedListNode<T> {
+  value: T;
+  next: DoubleLinkedListNode<T> | null;
+  prev: DoubleLinkedListNode<T> | null;
+
+  constructor(value: T) {
+    this.value = value;
+    this.next = null;
+    this.prev = null;
   }
 }
 
