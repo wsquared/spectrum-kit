@@ -148,22 +148,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Accessors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="browserhistory.html#current" class="tsd-kind-icon">current</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="browserhistory.html#root" class="tsd-kind-icon">root</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#back" class="tsd-kind-icon">back</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#forward" class="tsd-kind-icon">forward</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#getcurrentnode" class="tsd-kind-icon">get<wbr>Current<wbr>Node</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#getrootnode" class="tsd-kind-icon">get<wbr>Root<wbr>Node</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#getserializedcurrent" class="tsd-kind-icon">get<wbr>Serialized<wbr>Current</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#getserializedroot" class="tsd-kind-icon">get<wbr>Serialized<wbr>Root</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#setnode" class="tsd-kind-icon">set<wbr>Node</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#getcurrentpage" class="tsd-kind-icon">get<wbr>Current<wbr>Page</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#gethomepage" class="tsd-kind-icon">get<wbr>Home<wbr>Page</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#serializehistory" class="tsd-kind-icon">serialize<wbr>History</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="browserhistory.html#visit" class="tsd-kind-icon">visit</a></li>
 							</ul>
 						</section>
@@ -176,13 +167,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Browser<wbr>History<span class="tsd-signature-symbol">(</span>homepage<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="browserhistory.html" class="tsd-signature-type">BrowserHistory</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Browser<wbr>History<span class="tsd-signature-symbol">(</span>homepageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, state<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="browserhistory.html" class="tsd-signature-type">BrowserHistory</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L47">lib/browserHistory.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L49">lib/browserHistory.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -190,12 +181,10 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> homepage: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> = null</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The homepage to initialize the browser history with</p>
-										</div>
-									</div>
+									<h5>homepageUrl: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> state: <span class="tsd-signature-type">T</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="browserhistory.html" class="tsd-signature-type">BrowserHistory</a></h4>
@@ -208,65 +197,22 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_current" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _current</h3>
-					<div class="tsd-signature tsd-kind-icon">_current<span class="tsd-signature-symbol">:</span> <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">_current<span class="tsd-signature-symbol">:</span> <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L47">lib/browserHistory.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L49">lib/browserHistory.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_root" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _root</h3>
-					<div class="tsd-signature tsd-kind-icon">_root<span class="tsd-signature-symbol">:</span> <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">_root<span class="tsd-signature-symbol">:</span> <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L46">lib/browserHistory.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L48">lib/browserHistory.ts:48</a></li>
 						</ul>
 					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="current" class="tsd-anchor"></a>
-					<h3>current</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> current<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L67">lib/browserHistory.ts:67</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-							<p>the current node&#39;s value.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="root" class="tsd-anchor"></a>
-					<h3>root</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> root<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L60">lib/browserHistory.ts:60</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-							<p>the root node&#39;s value.</p>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -275,13 +221,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 					<a name="back" class="tsd-anchor"></a>
 					<h3>back</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">back<span class="tsd-signature-symbol">(</span>steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">back<span class="tsd-signature-symbol">(</span>steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L101">lib/browserHistory.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L97">lib/browserHistory.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,8 +241,8 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-							<p>The value of the node that is <code>steps</code> steps back from the current node</p>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The pathname and state that is the number of steps back from the current page</p>
 						</li>
 					</ul>
 				</section>
@@ -304,13 +250,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 					<a name="forward" class="tsd-anchor"></a>
 					<h3>forward</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">forward<span class="tsd-signature-symbol">(</span>steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">forward<span class="tsd-signature-symbol">(</span>steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L117">lib/browserHistory.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L113">lib/browserHistory.ts:113</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -324,125 +270,68 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-							<p>The value of the node that is <code>steps</code> steps forward from the current node</p>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The pathname and state that is <code>steps</code> steps forward from the current page</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getcurrentnode" class="tsd-anchor"></a>
-					<h3>get<wbr>Current<wbr>Node</h3>
+					<a name="getcurrentpage" class="tsd-anchor"></a>
+					<h3>get<wbr>Current<wbr>Page</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<wbr>Node<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<wbr>Page<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L81">lib/browserHistory.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L74">lib/browserHistory.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The current double linked list node</p>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>the current page&#39;s pathname and state</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getrootnode" class="tsd-anchor"></a>
-					<h3>get<wbr>Root<wbr>Node</h3>
+					<a name="gethomepage" class="tsd-anchor"></a>
+					<h3>get<wbr>Home<wbr>Page</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Root<wbr>Node<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Home<wbr>Page<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L74">lib/browserHistory.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L66">lib/browserHistory.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The root double linked list node</p>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>the homepage&#39;s pathname and state</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getserializedcurrent" class="tsd-anchor"></a>
-					<h3>get<wbr>Serialized<wbr>Current</h3>
+					<a name="serializehistory" class="tsd-anchor"></a>
+					<h3>serialize<wbr>History</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Serialized<wbr>Current<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">serialize<wbr>History<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/iserializedhistory.html" class="tsd-signature-type">ISerializedHistory</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L157">lib/browserHistory.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L128">lib/browserHistory.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>serializes the current node of the browser history, so that it can be stored in a database or send over the network.</p>
-								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>an array of objects representing the doubly linked list, where the first index 0 is the current node</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getserializedroot" class="tsd-anchor"></a>
-					<h3>get<wbr>Serialized<wbr>Root</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Serialized<wbr>Root<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L148">lib/browserHistory.ts:148</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>serializes the root node of the browser history, so that it can be stored in a database or send over the network.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>prev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>an array of objects representing the doubly linked list, where the first index 0 is the root node</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setnode" class="tsd-anchor"></a>
-					<h3>set<wbr>Node</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Node<span class="tsd-signature-symbol">(</span>node<span class="tsd-signature-symbol">: </span><a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L133">lib/browserHistory.ts:133</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>setNode sets the current node as the @param node and sets the head of @param node as the root node.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>node: <a href="doublelinkedlistnode.html" class="tsd-signature-type">DoubleLinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>a doubly linked list node</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/iserializedhistory.html" class="tsd-signature-type">ISerializedHistory</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A serialized version of the browser history</p>
 						</li>
 					</ul>
 				</section>
@@ -450,13 +339,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 					<a name="visit" class="tsd-anchor"></a>
 					<h3>visit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">visit<span class="tsd-signature-symbol">(</span>page<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">visit<span class="tsd-signature-symbol">(</span>page<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, state<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/f3e832c/src/lib/browserHistory.ts#L88">lib/browserHistory.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/lib/browserHistory.ts#L81">lib/browserHistory.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -464,10 +353,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>page: <span class="tsd-signature-type">T</span></h5>
+									<h5>page: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The page to visit</p>
+										<p>The page or pathname to visit</p>
 									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> state: <span class="tsd-signature-type">T</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -500,12 +392,6 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="browserhistory.html#_root" class="tsd-kind-icon">_root</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="browserhistory.html#current" class="tsd-kind-icon">current</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="browserhistory.html#root" class="tsd-kind-icon">root</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="browserhistory.html#back" class="tsd-kind-icon">back</a>
 							</li>
@@ -513,19 +399,13 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 								<a href="browserhistory.html#forward" class="tsd-kind-icon">forward</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="browserhistory.html#getcurrentnode" class="tsd-kind-icon">get<wbr>Current<wbr>Node</a>
+								<a href="browserhistory.html#getcurrentpage" class="tsd-kind-icon">get<wbr>Current<wbr>Page</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="browserhistory.html#getrootnode" class="tsd-kind-icon">get<wbr>Root<wbr>Node</a>
+								<a href="browserhistory.html#gethomepage" class="tsd-kind-icon">get<wbr>Home<wbr>Page</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="browserhistory.html#getserializedcurrent" class="tsd-kind-icon">get<wbr>Serialized<wbr>Current</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="browserhistory.html#getserializedroot" class="tsd-kind-icon">get<wbr>Serialized<wbr>Root</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="browserhistory.html#setnode" class="tsd-kind-icon">set<wbr>Node</a>
+								<a href="browserhistory.html#serializehistory" class="tsd-kind-icon">serialize<wbr>History</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="browserhistory.html#visit" class="tsd-kind-icon">visit</a>
@@ -542,6 +422,12 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="../interfaces/idllserializednode.html" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/ilocationstate.html" class="tsd-kind-icon">ILocation<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/iserializedhistory.html" class="tsd-kind-icon">ISerialized<wbr>History</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="../globals.html#idllserializedlist" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>List</a>

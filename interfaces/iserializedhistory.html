@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IDllSerializedNode | spectrum-kit</title>
+	<title>ISerializedHistory | spectrum-kit</title>
 	<meta name="description" content="Documentation for spectrum-kit">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="idllserializednode.html">IDllSerializedNode</a>
+					<a href="iserializedhistory.html">ISerializedHistory</a>
 				</li>
 			</ul>
-			<h1>Interface IDllSerializedNode&lt;T&gt;</h1>
+			<h1>Interface ISerializedHistory&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -78,7 +78,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IDllSerializedNode</span>
+						<span class="target">ISerializedHistory</span>
 					</li>
 				</ul>
 			</section>
@@ -89,9 +89,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idllserializednode.html#next" class="tsd-kind-icon">next</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idllserializednode.html#prev" class="tsd-kind-icon">prev</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idllserializednode.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iserializedhistory.html#currentpage" class="tsd-kind-icon">current<wbr>Page</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iserializedhistory.html#homepage" class="tsd-kind-icon">home<wbr>Page</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,32 +99,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="next" class="tsd-anchor"></a>
-					<h3>next</h3>
-					<div class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<a name="currentpage" class="tsd-anchor"></a>
+					<h3>current<wbr>Page</h3>
+					<div class="tsd-signature tsd-kind-icon">current<wbr>Page<span class="tsd-signature-symbol">:</span> <a href="../globals.html#idllserializedlist" class="tsd-signature-type">IDllSerializedList</a><span class="tsd-signature-symbol">&lt;</span><a href="ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/types/dllSerialization.ts#L4">types/dllSerialization.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/types/browserHistory.ts#L10">types/browserHistory.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="prev" class="tsd-anchor"></a>
-					<h3>prev</h3>
-					<div class="tsd-signature tsd-kind-icon">prev<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<a name="homepage" class="tsd-anchor"></a>
+					<h3>home<wbr>Page</h3>
+					<div class="tsd-signature tsd-kind-icon">home<wbr>Page<span class="tsd-signature-symbol">:</span> <a href="../globals.html#idllserializedlist" class="tsd-signature-type">IDllSerializedList</a><span class="tsd-signature-symbol">&lt;</span><a href="ilocationstate.html" class="tsd-signature-type">ILocationState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/types/dllSerialization.ts#L3">types/dllSerialization.ts:3</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="value" class="tsd-anchor"></a>
-					<h3>value</h3>
-					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/types/dllSerialization.ts#L2">types/dllSerialization.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/004e37c/src/types/browserHistory.ts#L9">types/browserHistory.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -150,30 +139,27 @@
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/doublelinkedlistnode.html" class="tsd-kind-icon">Double<wbr>Linked<wbr>List<wbr>Node</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="idllserializednode.html" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="ilocationstate.html" class="tsd-kind-icon">ILocation<wbr>State</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-has-type-parameter">
-						<a href="idllserializednode.html" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>Node</a>
+						<a href="iserializedhistory.html" class="tsd-kind-icon">ISerialized<wbr>History</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="idllserializednode.html#next" class="tsd-kind-icon">next</a>
+								<a href="iserializedhistory.html#currentpage" class="tsd-kind-icon">current<wbr>Page</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="idllserializednode.html#prev" class="tsd-kind-icon">prev</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="idllserializednode.html#value" class="tsd-kind-icon">value</a>
+								<a href="iserializedhistory.html#homepage" class="tsd-kind-icon">home<wbr>Page</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="ilocationstate.html" class="tsd-kind-icon">ILocation<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="iserializedhistory.html" class="tsd-kind-icon">ISerialized<wbr>History</a>
-					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="../globals.html#idllserializedlist" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>List</a>
 					</li>
