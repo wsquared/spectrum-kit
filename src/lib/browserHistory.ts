@@ -16,15 +16,15 @@ import {
  * const history = new BrowserHistory('homepage');
  *
  * history.visit('page1');
- * history.visit('page2');
- * history.visit('page3');
+ * history.visit('page2', 'foo');
+ * history.visit('page3', 'bar');
  *
- * history.back(1); // => { pathname: page2, state: undefined }
- * history.back(1); // => { pathname: page1, state: undefined }
- * history.back(1); // => { pathname: homepage, state: undefined }
- * history.forward(1); // => { pathname: page1, state: undefined }
- * history.forward(1); // => { pathname: page2, state: undefined }
- * history.forward(1); // => { pathname: page3, state: undefined }
+ * history.back(1); // => { pathname: 'page2', state: 'foo' }
+ * history.back(1); // => { pathname: 'page1', state: undefined }
+ * history.back(1); // => { pathname: 'homepage', state: undefined }
+ * history.forward(1); // => { pathname: 'page1', state: undefined }
+ * history.forward(1); // => { pathname: 'page2', state: 'foo' }
+ * history.forward(1); // => { pathname: 'page3', state: 'bar' }
  * ```
  * @template T The type of the value stored in each node
  */

@@ -30,14 +30,14 @@ import { BrowserHistory } from 'spectrum-kit';
 const history = new BrowserHistory('homepage');
 
 const page1 = history.visit('page1');
-const page2 = history.visit('page2');
+const page2 = history.visit('page2', 'foo');
 const page3 = history.visit('page3');
 
- history.back(1); // => { pathname: page2, state: undefined }
+ history.back(1); // => { pathname: page2, state: 'foo' }
  history.back(1); // => { pathname: page1, state: undefined }
  history.back(1); // => { pathname: homepage, state: undefined }
  history.forward(1); // => { pathname: page1, state: undefined }
- history.forward(1); // => { pathname: page2, state: undefined }
+ history.forward(1); // => { pathname: page2, state: 'foo' }
  history.forward(1); // => { pathname: page3, state: undefined }
 ```
 
@@ -81,9 +81,10 @@ The DoubleLinkedListNode class provides a versatile double-linked list node impl
 ```js
 import { DoubleLinkedListNode } from 'spectrum-kit';
 
-const node = new DoubleLinkedListNode('a');
+const node = new DoubleLinkedListNode('key', 'value');
 
-console.log(node.value); // => 'a'
+console.log(node.key); // => 'key'
+console.log(node.value); // => 'value'
 ```
 
 ### Deque
