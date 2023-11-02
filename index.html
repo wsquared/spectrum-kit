@@ -99,54 +99,12 @@
 <span class="hljs-keyword">const</span> page2 = history.visit(<span class="hljs-string">&#x27;page2&#x27;</span>);
 <span class="hljs-keyword">const</span> page3 = history.visit(<span class="hljs-string">&#x27;page3&#x27;</span>);
 
-history.back(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page2</span>
-history.back(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page1</span>
-history.back(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; homepage</span>
-history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page1</span>
-history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page2</span>
-history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; page3</span>
-</code></pre>
-				<p>You can use this to manage a user&#39;s history between separate applications by storing the serialized data:</p>
-				<pre><code class="language-js">(<span class="hljs-keyword">async</span> () =&gt; {
-  <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> localforage <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;localforage&#x27;</span>;
-  <span class="hljs-keyword">import</span> { BrowserHistory, deserializeDoubleLinkedList, IDllSerializedList } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;spectrum-kit&#x27;</span>;
-
-  interface IPageState {
-    <span class="hljs-attr">url</span>: string;
-    pageState: { <span class="hljs-attr">rowOffset</span>: number };
-  }
-  <span class="hljs-keyword">const</span> userId = <span class="hljs-string">&quot;123&quot;</span>;
-
-  <span class="hljs-keyword">const</span> setHistory =
-    <span class="hljs-function">(<span class="hljs-params">browserHistory: BrowserHistory&lt;IPageState&gt;</span>) =&gt;</span>
-    <span class="hljs-keyword">async</span> (userId: string, <span class="hljs-attr">state</span>: IPageState) =&gt; {
-      browserHistory.visit(state);
-
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> localforage.setItem&lt;IDllSerializedList&lt;IPageState&gt;&gt;(
-        userId,
-        browserHistory.getSerializedCurrent()
-      );
-    };
-
-  <span class="hljs-keyword">const</span> browserHistory = <span class="hljs-keyword">new</span> BrowserHistory&lt;IPageState&gt;({
-    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/&quot;</span>,
-    <span class="hljs-attr">pageState</span>: { <span class="hljs-attr">rowOffset</span>: <span class="hljs-number">0</span> },
-  });
-
-  <span class="hljs-keyword">const</span> history = <span class="hljs-keyword">await</span> setHistory(browserHistory)(userId, {
-    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/foo&quot;</span>,
-    <span class="hljs-attr">pageState</span>: { <span class="hljs-attr">rowOffset</span>: <span class="hljs-number">10</span> },
-  });
-
-  <span class="hljs-built_in">console</span>.log(history);
-  <span class="hljs-built_in">console</span>.log(
-    <span class="hljs-keyword">await</span> localforage.getItem&lt;IDllSerializedList&lt;IPageState&gt;&gt;(userId)
-  );
-  <span class="hljs-comment">// [</span>
-  <span class="hljs-comment">//    { value: { url: &#x27;/&#x27;, pageState: { rowOffset: 0 } }, prev: null, next: &#x27;/foo&#x27;},</span>
-  <span class="hljs-comment">//    { value: { url: &#x27;/foo&#x27;, pageState: { rowOffset: 10 } }, prev: &#x27;/&#x27;, next: null }</span>
-  <span class="hljs-comment">// ]</span>
-})();
+ history.back(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; { pathname: page2, state: undefined }</span>
+ history.back(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; { pathname: page1, state: undefined }</span>
+ history.back(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; { pathname: homepage, state: undefined }</span>
+ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; { pathname: page1, state: undefined }</span>
+ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; { pathname: page2, state: undefined }</span>
+ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; { pathname: page3, state: undefined }</span>
 </code></pre>
 				<a href="#serialization" id="serialization" style="color: inherit; text-decoration: none;">
 					<h3>Serialization</h3>
@@ -156,7 +114,7 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 <span class="hljs-keyword">import</span> { serializeDoubleLinkedList } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;spectrum-kit&#x27;</span>;
 
 <span class="hljs-comment">// Assuming you have a BrowserHistory instance called &#x27;history&#x27;</span>
-<span class="hljs-keyword">const</span> serializedData = serializeDoubleLinkedList(history.getRootNode());
+<span class="hljs-keyword">const</span> serializedData = history.serializeHistory();
 
 <span class="hljs-comment">// Now, you can store the &#x27;serializedData&#x27; array in your preferred storage solution</span>
 <span class="hljs-comment">// (e.g., IndexedDB, localStorage, or a database).</span>
@@ -165,16 +123,17 @@ history.forward(<span class="hljs-number">1</span>); <span class="hljs-comment">
 					<h3>Deserialization</h3>
 				</a>
 				<p>To retrieve and reconstruct your BrowserHistory data from storage, you can use the deserializeDoubleLinkedList function. This function takes the serialized data as input and reconstructs the doubly linked list, allowing you to continue using it.</p>
-				<pre><code class="language-js"><span class="hljs-comment">// Import the deserializeDoubleLinkedList function</span>
-<span class="hljs-keyword">import</span> { deSerializeDoubleLinkedList } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;spectrum-kit&#x27;</span>;
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { BrowserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;spectrum-kit&#x27;</span>;
 
-<span class="hljs-comment">// Retrieve the serialized data from your storage solution (e.g., IndexedDB or localStorage)</span>
+
+<span class="hljs-comment">// Retrieve the serialized data from your storage solution (e.g., IndexedDB or localStorage), must be serialized using</span>
+<span class="hljs-comment">// serializeDoubleLinkedList in this repo</span>
 <span class="hljs-keyword">const</span> storedData = <span class="hljs-comment">/* Retrieve your data here */</span>;
 
-<span class="hljs-comment">// Deserialize the data to reconstruct the BrowserHistory</span>
-<span class="hljs-keyword">const</span> deserializedList = deserializeDoubleLinkedList(storedData);
+<span class="hljs-comment">// Deserialize the data </span>
+<span class="hljs-keyword">const</span> history = <span class="hljs-keyword">new</span> BrowserHistory(<span class="hljs-string">&#x27;&#x27;</span>);
 
-<span class="hljs-comment">// You can now use &#x27;deserializedList&#x27; as a BrowserHistory instance with your history data.</span>
+history.deserializeHistory(storedData);
 </code></pre>
 				<a href="#doublelinkedlistnode" id="doublelinkedlistnode" style="color: inherit; text-decoration: none;">
 					<h3>DoubleLinkedListNode</h3>
