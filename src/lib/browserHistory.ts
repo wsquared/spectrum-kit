@@ -1,7 +1,10 @@
 import { ILocationState, ISerializedHistory } from '../types/browserHistory';
 
 import { DoubleLinkedListNode } from './dll';
-import { serializeDoubleLinkedList } from './dllSerialization';
+import {
+  deserializeDoubleLinkedList,
+  serializeDoubleLinkedList,
+} from './dllSerialization';
 
 /**
  * A BrowserHistory class that implements a doubly linked list.
@@ -12,50 +15,28 @@ import { serializeDoubleLinkedList } from './dllSerialization';
  *
  * const history = new BrowserHistory('homepage');
  *
- * const page1 = history.visit('page1');
- * const page2 = history.visit('page2');
- * const page3 = history.visit('page3');
+ * history.visit('page1');
+ * history.visit('page2');
+ * history.visit('page3');
  *
- * history.back(1); // => page2
- * history.back(1); // => page1
- * history.back(1); // => homepage
- * history.forward(1); // => page1
- * history.forward(1); // => page2
- * history.forward(1); // => page3
+ * history.back(1); // => { pathname: page2, state: undefined }
+ * history.back(1); // => { pathname: page1, state: undefined }
+ * history.back(1); // => { pathname: homepage, state: undefined }
+ * history.forward(1); // => { pathname: page1, state: undefined }
+ * history.forward(1); // => { pathname: page2, state: undefined }
+ * history.forward(1); // => { pathname: page3, state: undefined }
  * ```
- *
- * ### Example (commonjs)
- * ```js
- * const { BrowserHistory } = require('spectrum-kit');
- *
- * const history = new BrowserHistory('homepage');
- *
- * const page1 = history.visit('page1');
- * const page2 = history.visit('page2');
- * const page3 = history.visit('page3');
- *
- * history.back(1); // => page2
- * history.back(1); // => page1
- * history.back(1); // => homepage
- * history.forward(1); // => page1
- * history.forward(1); // => page2
- * history.forward(1); // => page3
- * ```
- *
  * @template T The type of the value stored in each node
  */
 class BrowserHistory<T> {
-  private _root: DoubleLinkedListNode<ILocationState<T>>;
-  private _current: DoubleLinkedListNode<ILocationState<T>>;
+  private _root: DoubleLinkedListNode<T>;
+  private _current: DoubleLinkedListNode<T>;
 
   /**
    * @param homepage The homepage to initialize the browser history with
    */
   constructor(homepageUrl: string, state?: T) {
-    this._root = new DoubleLinkedListNode<ILocationState<T>>({
-      pathname: homepageUrl,
-      state: state,
-    });
+    this._root = new DoubleLinkedListNode<T>(homepageUrl, state);
     this._current = this._root;
   }
 
@@ -64,7 +45,7 @@ class BrowserHistory<T> {
    * @returns the homepage's pathname and state
    */
   getHomePage(): ILocationState<T> {
-    return this._root.value;
+    return { pathname: this._root.key, state: this._root.value };
   }
 
   /**
@@ -72,17 +53,14 @@ class BrowserHistory<T> {
    * @returns the current page's pathname and state
    */
   getCurrentPage(): ILocationState<T> {
-    return this._current.value;
+    return { pathname: this._current.key, state: this._current.value };
   }
 
   /**
    * @param page The page or pathname to visit
    */
-  visit(page: string, state?: T) {
-    const node = new DoubleLinkedListNode<ILocationState<T>>({
-      pathname: page,
-      state,
-    });
+  visit(page: string, state?: T): void {
+    const node = new DoubleLinkedListNode<T>(page, state);
 
     this._current.next = node;
     node.prev = this._current;
@@ -102,7 +80,7 @@ class BrowserHistory<T> {
       stepsLeft--;
     }
 
-    return this._current.value;
+    return { pathname: this._current.key, state: this._current.value };
   }
 
   /**
@@ -118,7 +96,7 @@ class BrowserHistory<T> {
       stepsLeft--;
     }
 
-    return this._current.value;
+    return { pathname: this._current.key, state: this._current.value };
   }
 
   /**
@@ -130,6 +108,15 @@ class BrowserHistory<T> {
       homePage: serializeDoubleLinkedList(this._root),
       currentPage: serializeDoubleLinkedList(this._current),
     };
+  }
+
+  /**
+   *
+   * @param serializedHistory A serialized version of the browser history
+   */
+  deserializeHistory(serializedHistory: ISerializedHistory<T>): void {
+    this._root = deserializeDoubleLinkedList(serializedHistory.homePage);
+    this._current = deserializeDoubleLinkedList(serializedHistory.currentPage);
   }
 }
 

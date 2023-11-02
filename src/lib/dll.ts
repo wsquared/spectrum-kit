@@ -24,11 +24,13 @@
  * @template T The type of the value stored in the node
  */
 class DoubleLinkedListNode<T> {
+  key: string;
   value: T;
   next: DoubleLinkedListNode<T> | null;
   prev: DoubleLinkedListNode<T> | null;
 
-  constructor(value: T) {
+  constructor(key: string, value: T) {
+    this.key = key;
     this.value = value;
     this.next = null;
     this.prev = null;

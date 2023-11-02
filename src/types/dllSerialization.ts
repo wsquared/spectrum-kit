@@ -1,7 +1,8 @@
 interface IDllSerializedNode<T> {
+  key: string;
   value: T;
-  prev: T | null;
-  next: T | null;
+  prev: { key: string; value: T } | null;
+  next: { key: string; value: T } | null;
 }
 
 type IDllSerializedList<T> = IDllSerializedNode<T>[];
