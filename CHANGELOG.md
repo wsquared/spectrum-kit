@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/wsquared/spectrum-kit/compare/v2.4.0...v3.0.0) (2023-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **browserhistory:** back and forward returns the pathname and state rather than a 'node'
+* **browserhistory:** back and forward returns the pathname and state rather than a 'node'
+
+* **browserhistory:** browser history does not expose DLL as an api ([d70fdff](https://github.com/wsquared/spectrum-kit/commit/d70fdffba01c1b48dc7f4c03a4b463b8f35b6ad6))
+* **browserhistory:** browser history does not expose DLL as an api for simplicity ([ec0f589](https://github.com/wsquared/spectrum-kit/commit/ec0f589283cef83936b026f64dc454a3e9b92aa9))
+
 ## [2.4.0](https://github.com/wsquared/spectrum-kit/compare/v2.3.1...v2.4.0) (2023-09-12)
 
 
