@@ -86,13 +86,18 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="globals.html#features" class="tsd-kind-icon">Features</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#idllserializedlist" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>List</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#createfeaturetoggle" class="tsd-kind-icon">create<wbr>Feature<wbr>Toggle</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#deserializedoublelinkedlist" class="tsd-kind-icon">deserialize<wbr>Double<wbr>Linked<wbr>List</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#disablefeature" class="tsd-kind-icon">disable<wbr>Feature</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#enablefeature" class="tsd-kind-icon">enable<wbr>Feature</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#isenabled" class="tsd-kind-icon">is<wbr>Enabled</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#serializedoublelinkedlist" class="tsd-kind-icon">serialize<wbr>Double<wbr>Linked<wbr>List</a></li>
 							</ul>
 						</section>
@@ -101,13 +106,31 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="features" class="tsd-anchor"></a>
+					<h3>Features</h3>
+					<div class="tsd-signature tsd-kind-icon">Features<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/types/featureToggle.ts#L1">types/featureToggle.ts:1</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">boolean</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="idllserializedlist" class="tsd-anchor"></a>
 					<h3>IDll<wbr>Serialized<wbr>List</h3>
 					<div class="tsd-signature tsd-kind-icon">IDll<wbr>Serialized<wbr>List&lt;T&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/idllserializednode.html" class="tsd-signature-type">IDllSerializedNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/4b53440/src/types/dllSerialization.ts#L8">types/dllSerialization.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/types/dllSerialization.ts#L8">types/dllSerialization.ts:8</a></li>
 						</ul>
 					</aside>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -120,6 +143,52 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createfeaturetoggle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Feature<wbr>Toggle</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Feature<wbr>Toggle<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="globals.html#features" class="tsd-signature-type">Features</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>disableFeature<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>enableFeature<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>isEnabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> }</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/lib/featureToggle.ts#L19">lib/featureToggle.ts:19</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A feature toggle function that returns an object with methods to check if a feature is enabled, enable a
+									feature, and disable a feature</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="globals.html#features" class="tsd-signature-type">Features</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>An object with feature names as keys and booleans as values</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>disableFeature<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>enableFeature<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol">; </span>isEnabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> }</span></h4>
+							<p>an object with methods to check if a feature is enabled, enable a feature, and disable a feature</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>disable<wbr>Feature<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>enable<wbr>Feature<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>is<wbr>Enabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 					<a name="deserializedoublelinkedlist" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> deserialize<wbr>Double<wbr>Linked<wbr>List</h3>
@@ -130,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/4b53440/src/lib/dllSerialization.ts#L86">lib/dllSerialization.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/lib/dllSerialization.ts#L86">lib/dllSerialization.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -161,6 +230,75 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="disablefeature" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> disable<wbr>Feature</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">disable<wbr>Feature<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="globals.html#features" class="tsd-signature-type">Features</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/lib/featureToggle.ts#L9">lib/featureToggle.ts:9</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="globals.html#features" class="tsd-signature-type">Features</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="enablefeature" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> enable<wbr>Feature</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">enable<wbr>Feature<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="globals.html#features" class="tsd-signature-type">Features</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/lib/featureToggle.ts#L6">lib/featureToggle.ts:6</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="globals.html#features" class="tsd-signature-type">Features</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="isenabled" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Enabled</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Enabled<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="globals.html#features" class="tsd-signature-type">Features</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/lib/featureToggle.ts#L3">lib/featureToggle.ts:3</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="globals.html#features" class="tsd-signature-type">Features</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 					<a name="serializedoublelinkedlist" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> serialize<wbr>Double<wbr>Linked<wbr>List</h3>
@@ -171,7 +309,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/4b53440/src/lib/dllSerialization.ts#L15">lib/dllSerialization.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/wsquared/spectrum-kit/blob/ebc9c99/src/lib/dllSerialization.ts#L15">lib/dllSerialization.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,11 +370,26 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/iserializedhistory.html" class="tsd-kind-icon">ISerialized<wbr>History</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#features" class="tsd-kind-icon">Features</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#idllserializedlist" class="tsd-kind-icon">IDll<wbr>Serialized<wbr>List</a>
 					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createfeaturetoggle" class="tsd-kind-icon">create<wbr>Feature<wbr>Toggle</a>
+					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#deserializedoublelinkedlist" class="tsd-kind-icon">deserialize<wbr>Double<wbr>Linked<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#disablefeature" class="tsd-kind-icon">disable<wbr>Feature</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#enablefeature" class="tsd-kind-icon">enable<wbr>Feature</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#isenabled" class="tsd-kind-icon">is<wbr>Enabled</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#serializedoublelinkedlist" class="tsd-kind-icon">serialize<wbr>Double<wbr>Linked<wbr>List</a>
